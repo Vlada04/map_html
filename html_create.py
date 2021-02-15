@@ -5,13 +5,14 @@ from geopy.geocoders import Nominatim
 
 def read_file():
     '''
+    
     '''
     lst = []
     file = open('locations1.txt', 'r', encoding='utf-16')
     for line in file:
         lst.append(line)
     return lst
-    
+
 
 def create_map_html():
     year = input("Please enter a year you would like to have a map for:")
