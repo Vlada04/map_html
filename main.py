@@ -5,6 +5,9 @@ from geopy.geocoders import Nominatim
 from math import radians, cos, sin, asin, sqrt
 
 def read_file():
+    '''
+    Read file with films base
+    '''
     lst = []
     file = open('locations1.txt', 'r', encoding='utf-16')
     for line in file:
@@ -12,6 +15,9 @@ def read_file():
     return lst
 
 def create_map_html():
+    '''
+    Create html map with films of given year
+    '''
     year = input("Please enter a year you would like to have a map for:")
     location = input("Please enter your location (format: lat, long):")
     print("Map is generating...")
@@ -19,7 +25,6 @@ def create_map_html():
 
     loc = []
     loc.append(location.split(', '))
-
 
     map = folium.Map(location=[float(loc[0][0]), float(loc[0][1])])
 
@@ -91,7 +96,19 @@ def create_map_html():
     for i in list_of_markers:
         map.add_child(folium.Marker(location=i[-1],
                         popup=i[0],
-                        icon=folium.Icon()))
-    map.save('Map_5.html')
-    return webbrowser.open('Map_5.html', new=2)
+                        icon=folium.Icon(color='green')))
+
+    fg_pp = folium.FeatureGroup(name="Population")
+
+    fg_pp.add_child(folium.GeoJson(data=open('world.json', 'r',
+                    encoding='utf-8-sig').read(),
+                    style_function=lambda x: {'fillColor':'green'
+    if x['properties']['POP2005'] < 10000000
+    else 'blue' if 10000000 <= x['properties']['POP2005'] < 20000000
+    else 'red'}))
+    map.add_child(fg_pp)
+    
+    map.save('Map_of_films.html')
+    return webbrowser.open('Map_of_films.html', new=2)
+
 print(create_map_html())
