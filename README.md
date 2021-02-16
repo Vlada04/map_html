@@ -5,4 +5,4 @@ and as a result receives an HTML file.
 Example:
 2006
 49.83826, 24.02324
-![alt text](map.jpg?raw=true'text')
+![text](map.jpg?raw=true'text')
