@@ -6,4 +6,3 @@ Example:
 2006
 49.83826, 24.02324
 ![map](https://user-images.githubusercontent.com/73779916/108080170-3e631780-7078-11eb-856e-8c0629473d53.jpg)
-
