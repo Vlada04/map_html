@@ -7,6 +7,8 @@ from math import radians, cos, sin, asin, sqrt
 def read_file():
     '''
     Read file with films base
+    >>> print(type(read_file()))
+    <class 'list'>
     '''
     lst = []
     file = open('locations1.txt', 'r', encoding='utf-16')
@@ -14,9 +16,12 @@ def read_file():
         lst.append(line)
     return lst
 
+
 def create_map_html():
     '''
     Create html map with films of given year
+    >>> print(create_map_html())
+    True
     '''
     year = input("Please enter a year you would like to have a map for:")
     location = input("Please enter your location (format: lat, long):")
